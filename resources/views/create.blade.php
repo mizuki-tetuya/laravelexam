@@ -16,7 +16,7 @@
   @endforeach
 </ul>
 @endif
-
+@foreach($param as $param)
 <table>
   @csrf
   <tr>
@@ -39,5 +39,5 @@
   </tr>
 </table>
 </ul>
-
+@endforeach
 @endsection
