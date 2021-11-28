@@ -11,15 +11,14 @@ class TodoController extends Controller
 {
     public function index(Request $request)
     {
-        $validate_rule = [
-            'addtext'=>'required'
-        ];
-        $this->validate($request, $validate_rule);
-        $items = todos::all();
-        return view('index', ['items'=>$items]);
+        return view('index');
     }
     public function create(Request $request)
     {
+        $validate_rule = [
+            'addtext'=> 'required|max:20'
+        ];
+        $this->validate($request, $validate_rule);
         $date = Carbon::now();
         $param = [
             'date' => $date,

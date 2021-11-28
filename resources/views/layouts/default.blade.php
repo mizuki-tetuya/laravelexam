@@ -74,6 +74,7 @@
   <body>
     <div class="content">
       <h1>Todo List</h1>
+      @yield('content-error')
       <form action="/todo/create" method="POST">
         @csrf
         <div class="addbotton">

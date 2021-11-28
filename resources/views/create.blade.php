@@ -16,6 +16,7 @@
   @endforeach
 </ul>
 @endif
+
 <table>
   @csrf
   <tr>
@@ -37,4 +38,6 @@
     </td>
   </tr>
 </table>
+</ul>
+
 @endsection
