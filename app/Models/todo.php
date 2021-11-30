@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class todo extends Model
 {
-    use HasFactory;
+    protected $fillable = ['content'];
+
 }

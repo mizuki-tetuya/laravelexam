@@ -79,7 +79,7 @@
         @csrf
         <div class="addbotton">
         <div class="text">
-          <input type="text" name="addtext">
+          <input type="text" name="content">
         </div>
         <div class="submit">
           <input type="submit" value="追加">
@@ -94,7 +94,8 @@
           <div class="delete">削除</div>
         </div>
       </div>
-      @yield('content')
+      @yield('content1')
+      @yield('content2')
     </div>
 </body>
 </html>

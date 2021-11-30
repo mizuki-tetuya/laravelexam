@@ -3,35 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-
 class TodoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('index');
+        $items = DB::select('select * from todos');
+        return view('index', ['items'=>$items]);
     }
     public function create(Request $request)
     {
         $validate_rule = [
-            'addtext'=> 'required|max:20'
+            'content'=>'required|max:20'
         ];
-        $this->validate($request, $validate_rule);
-        $date = Carbon::now();
+        $this->validate($request, ['validate_rule'=>$validate_rule]);
         $param = [
-            'date' => $date,
-            'item' => $request->addtext
+            $created_at=>$request->created_at,
+            'content'=>$request->safe->only('content')
         ];
-        return view('index' ['param'->$param]);
+        DB::insert('insert into todos (content, created_at) values (content, created_at)', $param);
+        return redirect('/');
     }
     public function update(Request $request)
     {
-
+        return view('index');
     }
     public function delete(Request $request)
     {
-
+        return view('index');
     }
 }
