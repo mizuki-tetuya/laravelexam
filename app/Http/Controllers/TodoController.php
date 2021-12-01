@@ -16,7 +16,7 @@ class TodoController extends Controller
     }
     public function create(Request $request)
     {
-        $created_at = date('Y:m:d H::i:s');
+        $created_at = todos::with('created_at')->get();
         $validate_rule = [
             'content'=>'required|max:20',
         ];

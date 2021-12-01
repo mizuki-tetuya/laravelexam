@@ -16,12 +16,12 @@
   @endforeach
 </ul>
 @endif
-@foreach($items as $items)
+@foreach($items as $item)
 <table>
   @csrf
   <tr>
     <td>
-      {{$items->$created_at}}
+      {{$items->created_at}}
     </td>
     <td>
       {{$items->content}}
