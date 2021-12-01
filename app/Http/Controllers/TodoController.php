@@ -11,20 +11,21 @@ class TodoController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::select('select * from todos');
+        $items = DB::table('todos')->get();
         return view('index', ['items'=>$items]);
     }
     public function create(Request $request)
     {
+        $created_at = date('Y:m:d H::i:s');
         $validate_rule = [
             'content'=>'required|max:20'
         ];
         $this->validate($request, ['validate_rule'=>$validate_rule]);
         $param = [
-            $created_at=>$request->created_at,
-            'content'=>$request->safe->only('content')
+            'content'=>$request->safe->only('content'),
+            'created_at'=>$created_at,
         ];
-        DB::insert('insert into todos (content, created_at) values (content, created_at)', $param);
+        DB::table('todos')->insert($param);
         return redirect('/');
     }
     public function update(Request $request)
