@@ -18,15 +18,15 @@ class TodoController extends Controller
     {
         $created_at = date('Y:m:d H::i:s');
         $validate_rule = [
-            'content'=>'required|max:20'
+            'content'=>'required|max:20',
         ];
         $this->validate($request, ['validate_rule'=>$validate_rule]);
         $param = [
-            'content'=>$request->safe->only('content'),
+            'content'=>$request->content,
             'created_at'=>$created_at,
         ];
         DB::table('todos')->insert($param);
-        return redirect('/');
+        return redirext('/');
     }
     public function update(Request $request)
     {
