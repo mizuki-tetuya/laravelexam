@@ -21,10 +21,10 @@
   @csrf
   <tr>
     <td>
-      {{$items->created_at}}
+      {{$item->created_at}}
     </td>
     <td>
-      {{$items->content}}
+      {{$item->content}}
     </td>
     <td>
       <form action="/todo/update" method="POST">
@@ -38,9 +38,7 @@
     </td>
   </tr>
 </table>
-</ul>
 @endforeach
-
 @endsection
 
 
