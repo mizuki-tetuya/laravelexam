@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+
 class TodoController extends Controller
 {
     public function index(Request $request)
@@ -31,13 +32,16 @@ class TodoController extends Controller
         $param = [
             'content'=>$request->content,
         ];
-        DB::table('todos')->update($param);
+        DB::table('todos')->where('id', $request->id)->update($param);
         return redirect('/');
     }
     public function delete(Request $request)
     {
-        $param = ['content'=>$request->content];
-        $items = DB::table('todos')->delete($param);
+        $param = [
+            'id'=>$request->id,
+            'content'=>$request->content
+        ];
+        DB::table('todos')->where('id', $request->id)->delete($param);
         return redirect('/');
     }
 }

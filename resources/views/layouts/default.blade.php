@@ -50,20 +50,7 @@
       background-color: violet;
       font-weight: bold;
     }
-    .list {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 16px;
-      text-align: center;
-    }
-    .tate {
-      width: 20%;
-    }
-    .task {
-      width: 20%;
-    }
+    
     .button {
       display: flex;
       justify-content: space-between;
@@ -86,16 +73,8 @@
         </div>
       </div>
       </form>
-      <div class="list">
-        <div class="data">作成日</div>
-        <div class="task">タスク名</div>
-        <div class="button">
-          <div class="update">更新</div>
-          <div class="delete">削除</div>
-        </div>
-      </div>
-      @yield('content1')
-      @yield('content2')
+
+      @yield('content')
     </div>
 </body>
 </html>
