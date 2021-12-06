@@ -11,6 +11,9 @@ table {
 .list td {
   text-align: center;
 }
+.update_btn div:first-child {
+  text-align: center;
+}
 td {
   text-align: center;
 }
@@ -18,13 +21,35 @@ td {
   display: flex;
   justify-content: space-between;
 }
+.update_btn div:first-child {
+  width: 50%;
+  text-align: center;
+}
+.update_btn div:last-child {
+  width: 15%;
+  text-align: center;
+}
 .update-text {
   display: flex;
   justify-content: space-between;
 }
-.update-content-btn {
+.update-text input:first-child {
+  width: 60%;
+}
+.update-text input:last-child {
+  display: block;
+  padding: 7px 15px;
   background-color: white;
   color: orange;
+  border: 1px solid orange;
+  border-radius: 10px
+}
+.delete-text input:last-child {
+  padding: 7px 15px;
+  background-color: white;
+  color: #7fffd4;
+  border: 1px solid #7fffd4;
+  border-radius: 10px;
 }
 
 </style>
@@ -44,6 +69,7 @@ td {
     <td>作成日</td>
     <td class="update_btn">
       <div>タスク名</div>
+      
       <div>更新</div>
     </td>
 
@@ -69,8 +95,10 @@ td {
     <td>
       <form action="/todo/delete" method="POST" name="delete">
         @csrf
-        <input type="hidden" name="id" value="{{$item->id}}">
-        <input type="submit" value="削除" name="delete-content-btn">
+        <div class="delete-text">
+          <input type="hidden" name="id" value="{{$item->id}}">
+          <input type="submit" value="削除" name="delete-content-btn">
+        </div>
       </form>
     </td>
   </tr>
